@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputMaskModule } from 'primeng/inputmask';
+import { PessoaService } from './pessoa.service';
 
 @NgModule({
   declarations: [PessoapesquisaComponent],
@@ -35,6 +36,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     InputMaskModule,
 
   ],
-  exports: [PessoapesquisaComponent]
+  exports: [PessoapesquisaComponent],
+  providers: [PessoaService]
 })
 export class PessoasModule { }

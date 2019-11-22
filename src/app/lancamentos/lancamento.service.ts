@@ -20,7 +20,7 @@ export class LancamentoService {
   lancamentosUrl = 'http://localhost:8080/lancamentos';
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
   ) { }
 
 listarLancamentos(filtro: LancamentoFiltro): Promise<any> {
@@ -53,6 +53,13 @@ listarLancamentos(filtro: LancamentoFiltro): Promise<any> {
         };
         return resultado;
       });
+  }
+
+  excluirLancamento(codigo: number): Promise<void> {
+       const headers = new HttpHeaders().set('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==');
+       return this.httpClient.delete(`${this.lancamentosUrl}/${codigo}`, {headers})
+      .toPromise()
+      .then(() => null);
   }
 
 }
