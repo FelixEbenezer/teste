@@ -62,8 +62,8 @@ export class LancamentopesquisaComponent implements OnInit {
     this.lancamentoService.excluirLancamento(lancamento.codigo)
       .then(() => {
         this.grid.reset();
-        this.toastyService.success(`Lancamento: ${lancamento.pessoa} excluido com sucesso`);
-        //  this.toastyService.success(`Lancamento: ${this.filtro.descricao} excluido com sucesso`);
+       // this.toastyService.success(`Lancamento: ${lancamento.pessoa} excluido com sucesso`);
+        this.toastyService.success(`Lancamento: ${lancamento.descricao} excluido com sucesso`);
       })
       .catch(erro => this.errorHandler.handle(erro));
 }

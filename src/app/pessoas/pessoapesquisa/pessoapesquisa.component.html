@@ -38,8 +38,8 @@
         <ng-template pTemplate="body" let-pes>
             <tr>
                 <td>{{pes.nome}}</td>
-                <td>{{pes.endereco.cidade.nome}}</td>
-                <td>{{pes.endereco.cidade.nome}}</td>
+                <td>{{pes.endereco.cidade?.nome}}</td>
+                <td>{{pes.endereco.estado?.nome}}</td>
                 <td> <a href="javascript:;"
                   [pTooltip]="pes.ativo ? 'Desativar' : 'Ativar'" tooltipPosition="top"
                   (click)="alternarStatus(pes)">

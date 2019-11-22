@@ -1,3 +1,4 @@
+import { Lancamento } from './../core/model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
@@ -60,6 +61,15 @@ listarLancamentos(filtro: LancamentoFiltro): Promise<any> {
        return this.httpClient.delete(`${this.lancamentosUrl}/${codigo}`, {headers})
       .toPromise()
       .then(() => null);
+  }
+
+   adicionarLancamento(lancamento: Lancamento): Promise<Lancamento> {
+  const headers = new HttpHeaders()
+        .set('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==')
+        .set('Content-Type', 'application/json');
+
+  return this.httpClient.post<Lancamento>(this.lancamentosUrl, lancamento, {headers})
+    .toPromise();
   }
 
 }

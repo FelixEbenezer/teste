@@ -15,9 +15,10 @@ import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PessoaService } from './pessoa.service';
+import { PessoacadastroComponent } from './pessoacadastro/pessoacadastro.component';
 
 @NgModule({
-  declarations: [PessoapesquisaComponent],
+  declarations: [PessoapesquisaComponent, PessoacadastroComponent],
   imports: [
     CommonModule,
     SharedModule,

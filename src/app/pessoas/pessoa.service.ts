@@ -56,8 +56,9 @@ export class PessoaService {
       .then(() => null);
   }
   mudarStatus(codigo: number, ativo: boolean): Promise<void> {
-    const headers = new HttpHeaders().set('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==');
-    headers.append('Content-Type', 'application/json');
+    const headers = new HttpHeaders()
+        .set('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==')
+        .set('Content-Type', 'application/json');
 
     return this.httpClient.put(`${this.pessoasUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise()
