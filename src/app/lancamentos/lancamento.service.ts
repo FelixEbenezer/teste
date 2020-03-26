@@ -72,5 +72,49 @@ listarLancamentos(filtro: LancamentoFiltro): Promise<any> {
     .toPromise();
   }
 
+  // para atualizar, bucar por codigo e converter strings em datas
+
+  private converterStringsParaDatas(lancamentos: Lancamento[]) {
+    for (const lancamento of lancamentos) {
+      lancamento.dataVencimento = moment(lancamento.dataVencimento,
+        'YYYY-MM-DD').toDate();
+
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = moment(lancamento.dataPagamento,
+          'YYYY-MM-DD').toDate();
+      }
+    }
+  }
+
+  atualizarLancamento(lancamento: Lancamento): Promise<Lancamento> {
+    const headers = new HttpHeaders()
+        .set('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==')
+        .set('Content-Type', 'application/json');
+
+    return this.httpClient.put(`${this.lancamentosUrl}/${lancamento.codigo}`, lancamento, { headers })
+      .toPromise()
+      .then(response => {
+        const lancamentoAlterado = response as Lancamento;
+
+        this.converterStringsParaDatas([lancamentoAlterado]);
+
+        return lancamentoAlterado;
+      });
+  }
+
+  buscarPorCodigo(codigo: number): Promise<Lancamento> {
+    const headers = new HttpHeaders().set('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==');
+
+    return this.httpClient.get(`${this.lancamentosUrl}/${codigo}`, { headers })
+      .toPromise()
+      .then(response => {
+        const lancamento = response as Lancamento;
+
+        this.converterStringsParaDatas([lancamento]);
+
+        return lancamento;
+      });
+  }
+
 }
 

@@ -16,6 +16,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PessoaService } from './pessoa.service';
 import { PessoacadastroComponent } from './pessoacadastro/pessoacadastro.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [PessoapesquisaComponent, PessoacadastroComponent],
@@ -35,6 +36,7 @@ import { PessoacadastroComponent } from './pessoacadastro/pessoacadastro.compone
     SelectButtonModule,
     CurrencyMaskModule,
     InputMaskModule,
+    RouterModule
 
   ],
   exports: [PessoapesquisaComponent],

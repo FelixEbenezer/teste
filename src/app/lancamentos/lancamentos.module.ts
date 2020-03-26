@@ -1,3 +1,4 @@
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +19,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputMaskModule } from 'primeng/inputmask';
 import { LancamentocadastroComponent } from './lancamentocadastro/lancamentocadastro.component';
 import { LancamentoService } from './lancamento.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { LancamentoService } from './lancamento.service';
     InputMaskModule,
 
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [
     LancamentopesquisaComponent,

@@ -1,3 +1,151 @@
-<p>
-  pessoacadastro works!
-</p>
+<!--
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>{{ editando ? 'Edição de' : 'Novo' }} Pessoa</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome"
+          [(ngModel)]="pessoa.nome"
+          #descricao="ngModel" required minlength="5">
+
+        <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Logradouro</label>
+        <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.logradouro"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Numero</label>
+        <input pInputText type="text" name="numero" [(ngModel)]="pessoa.numero"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Complemento</label>
+        <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.complemento"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Bairro</label>
+        <input pInputText type="text" name="bairro" [(ngModel)]="pessoa.bairro"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>CEP</label>
+        <input pInputText type="text" name="cep" [(ngModel)]="pessoa.cep"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cidade</label>
+        <input pInputText type="text" name="cidade" [(ngModel)]="pessoa.cidade"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Estado</label>
+        <input pInputText type="text" name="estado" [(ngModel)]="pessoa.estado"
+          required>
+      </div>
+
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" routerLink="/pessoas/novo"></button>
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+-->
+
+
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvarPessoa(f)">
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1> {{ editando ? 'Editando' : 'Novo'}}Pessoa</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="pessoa.nome"
+        #nome="ngModel"   required minlength="5">
+<!-- #nome="ngModel" serve para ligar o name = nome com a tag message atravas de [control]-->
+      <app-message [control]="nome" error="required"
+          text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength"
+          text="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres"></app-message>
+
+      </div>
+
+      <div class="ui-g-12 ui-md-9 ui-fluid">
+        <label>Logradouro</label>
+        <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.logradouro"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-3 ui-fluid">
+        <label>Numero</label>
+        <p-inputMask mask="09.99" name="numero" [(ngModel)]="pessoa.numero" required
+        [ngStyle]="{'text-align': center}"></p-inputMask>
+
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Complemento</label>
+        <input pInputText type="text" name="complemento" [(ngModel)]="pessoa.complemento"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>Bairro</label>
+        <input pInputText type="text" name="bairro" [(ngModel)]="pessoa.bairro"
+          required>
+      </div>
+
+      <div class="ui-g-12 ui-md-4 ui-fluid">
+        <label>CEP</label>
+        <p-inputMask mask="99/99/9999" name="cep" [(ngModel)]="pessoa.cep" required></p-inputMask>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Cidade</label>
+
+          <p-dropdown [options]="cidades" placeholder="Selecione"
+          [autoWidth]="false" [filter]="false" #cidades></p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Estado</label>
+        <input pInputText type="text" name="estado" [(ngModel)]="pessoa.estado"
+          required>
+      </div>
+
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid" ></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" routerLink="/pessoas/novo"></button>
+        <a routerLink="/pessoas">Voltar para a pesquisa</a>
+      </div>
+    </div>
+
+  </form>
+</div>
+

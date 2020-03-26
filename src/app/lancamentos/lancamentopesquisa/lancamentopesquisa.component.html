@@ -61,7 +61,7 @@
                 <td class="col-data-content">{{lancamento.dataPagamento | date : 'dd/MM/y'}}</td>
                 <td class="col-valor-content" [ngStyle]="{ color: lancamento.tipo === 'DESPESA' ? 'red' : 'blue'}">{{lancamento.valor | currency : 'EUR':true :'1.2-2'}}</td>
                 <td class="col-acoes">
-                  <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></button>
+                  <button pButton icon="pi pi-pencil" [routerLink]="['/lancamentos', lancamento.codigo]" pTooltip="Editar" tooltipPosition="top"></button>
                   <button pButton icon="pi pi-trash" (click)="confirmarExclusao(lancamento)" pTooltip="Apagar" tooltipPosition="top"></button>
                 </td>
             </tr>
@@ -71,7 +71,7 @@
 </div>
 
  <div class="ui-g-12">
-      <a pButton label="Novo Lançamento"></a>
+      <a pButton label="Novo Lançamento" routerLink="/lancamentos/novo"></a>
     </div>
 
 </div>
